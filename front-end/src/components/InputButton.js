@@ -4,8 +4,7 @@ class InputButton extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      inputField: '',
-      links: []
+      inputField: ''
     }
   }
 
@@ -14,13 +13,14 @@ class InputButton extends React.Component {
   }
 
   sendInputValue = () => {
+    const { setLinks } = this.props;
     fetch(`${process.env.REACT_APP_API}/getFilteredLinks?numberOfPages=${this.state.inputField}`, {
       method: 'GET',
       headers: { 'Accept': 'application/json' }
     })
       .then(response => response.json())
-      .then(console.log)
-      .catch();
+      .then(data => setLinks(data.success))
+      .catch(console.log);
   }
 
   render() {

@@ -50,7 +50,7 @@ const hasLinkToApex = async (article) => {
   }
 }
 
-const getFilteredLinks = async (numberOfPages) => {
+const getFilteredLinks = async (numberOfPages = 1) => {
   try {
     const links = await getLinksFromPage(numberOfPages);
     const results = [];

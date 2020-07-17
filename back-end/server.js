@@ -15,6 +15,7 @@ server.get('/', (req, res) => {
 
 server.get('/getFilteredLinks', async (req, res) => {
   try {
+    console.log(req.query.numberOfPages)
     const success = await getFilteredLinks(req.query.numberOfPages);
     res.json({ success });
   } catch(error) {
